@@ -4,9 +4,7 @@ rvm:
   - 2.0.0
 
 notifications:
-  webhooks: https://belly-travis-grove-bridge.herokuapp.com/send_to_grove
-
-before_script:
+  webhooks: http://requestb.in/11og57o1
 
 script: "bundle exec rspec"
 

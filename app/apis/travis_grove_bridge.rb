@@ -7,13 +7,13 @@ module TravisGroveBridge
     desc "Post a webhook from Travis CI to here, and it will send a webhook to Grove.io IRC"
     post :send_to_grove do
       # receive and parse the travis webhook
-      payload = params[:payload]
-      commit_sha = payload[:commit]
-      commit_message = payload[:message]
-      author_name = payload[:author_name]
-      repo_name = payload[:repository][:name]
-      repo_owner = payload[:repository][:owner_name]
-      status_message = payload[:status_message]
+      payload = JSON.parse(params[:payload])
+      commit_sha = payload['commit']
+      commit_message = payload['message']
+      author_name = payload['author_name']
+      repo_name = payload['repository']['name']
+      repo_owner = payload['repository']['owner_name']
+      status_message = payload['status_message']
 
       # send to grove
       icon_url = ENV['GROVE_ICON_URL'].blank? ? "https://grove.io/static/img/avatar.png" : ENV['GROVE_ICON_URL']

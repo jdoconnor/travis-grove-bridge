@@ -29,6 +29,10 @@ module TravisGroveBridge
       )
     end
 
+    get do
+      {:status => 'ok'}
+    end
+    
     add_swagger_documentation
   end
 end

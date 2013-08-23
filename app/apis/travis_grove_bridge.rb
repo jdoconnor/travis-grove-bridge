@@ -18,7 +18,7 @@ module TravisGroveBridge
 
       # send to grove
       icon_url = ENV['GROVE_ICON_URL'].blank? ? "https://grove.io/static/img/avatar.png" : ENV['GROVE_ICON_URL']
-      message = "Travis CI run #{status_message} for #{repo_owner}/#{repo_name}\n#{commit_message} (#{commit_sha}) by #{author_name}\n#{build_url}"
+      message = "Travis CI run #{status_message} for #{repo_owner}/#{repo_name}\n#{commit_message}\n(#{commit_sha}) by #{author_name}\n#{build_url}"
 
       Typhoeus.post(ENV['GROVE_POST_URI'],
         :body => {
